@@ -1,30 +1,24 @@
-# Ignore node_modules
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
 node_modules/
 
-# astro
-frontend/dist/
-frontend/.astro/
-frontend/.env
-frontend/.env.*
-frontend/.DS_Store
-
-# backend
-api/.venv/
-api/venv/
-api/env/
-api/__pycache__/
-api/**/*.pyc
-api/.env
-api/.env.*
-
-# Ignore package lock file
-package-lock.json
-
-# Optional: Ignore logs and environment files
+# logs
 npm-debug.log*
-.env
-*.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Optional: Ignore OS files (Mac/Windows)
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
 .DS_Store
-Thumbs.db
+
+# jetbrains setting folder
+.idea/
