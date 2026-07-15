@@ -1,0 +1,91 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import ProjectHeader from "@/components/ProjectHeader.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+
+const projects = [
+    {
+        id: "z-engine",
+        title: "z-engine",
+    },
+    {
+        id: "haideron-lms",
+        title: "Haideron-LMS",
+    },
+    {
+        id: "pizzrella",
+        title: "Pizzrella",
+    },
+    {
+        id: "spotify-clone",
+        title: "Spotify Clone",
+    },
+];
+
+const projectCards = [
+    {
+        id: "z-engine",
+        title: "z-engine",
+        subtitle: "Custom C++ Game Engine",
+        description: `Inspired by my passion for engine development and classic CS Zombie Mods, I started building Z-Engine in September 2025. It's a proprietary engine written in C++ and OpenGL, purpose-built for a survival horror game currently targeting a Christmas 2028 release.`,
+        image: "/images/projects/z-engine.png",
+        technologies: ["C++", "OpenGL"],
+        startDate: "Sept. 2025",
+        endDate: "Ongoing",
+        website: "https://haider-sama.dev/docs",
+    },
+
+    {
+        id: "haideron-lms",
+        title: "Haideron-LMS",
+        subtitle: "Outcome-Based Learning Management System (OBE-LMS)",
+        description: `During the summer vacation of 2025, I developed an Outcome-Based Education (OBE) LMS. As my own university and other institutes in my country were facing the same problem of a lack of a robust software that can handle advanced outcomes mapping (PEO, PLO, CLO). Every year PEC does a yearly visit to the institutes that follow an OBE accreditation and mostly my professors and faculty were working their socks off manually generating the transcripts and outcome reports of the students. Thus, I developed Haideron-LMS, which features advanced and secure authentication with strict RBAC (Admin, Faculty, Student) and secure JWT-based authentication with refresh/access tokens and OAuth for third-party auth services (Google), secure email verification, password reset, and session lifecycle using Resend, added audit logs, rate-limiting, input sanitization to secure result finalization workflows, academic management for programs, courses, semesters, student batches and custom dashboard for faculty and students, with optional social features that allow students and faculty alike to collaborate efficiently. Although actively developed, future additions are currently paused, and the project is at a stable stalemate.`,
+        image: "/images/projects/haideron-lms.png",
+        technologies: [
+            "Node.js",
+            "Express.js",
+            "TypeScript",
+            "PostgreSQL",
+            "Drizzle ORM",
+            "Redis",
+        ],
+        startDate: "June 2025",
+        endDate: "Oct. 2025",
+        github: "https://github.com/haider-sama/Haideron-LMS",
+        demo: "https://youtu.be/Gh8xX-oWxnM",
+    },
+
+    {
+        id: "pizzrella",
+        title: "Pizzrella",
+        subtitle: "Full-Stack Pizza Delivery App",
+        description: `Built a complete food ordering app from scratch in NEXT.js 14, with admin 
+        dashboard, shopping cart, authentication using Next-Auth (Google Provider). Clean and 
+        modern landing page using TailwindCSS. Using Typescript for type safety and MongoDB as 
+        the database.`,
+        image: "/images/projects/pizzrella.png",
+        technologies: ["Next.js", "Typescript", "MongoDB"],
+        startDate: "July 2024",
+        github: "https://github.com/haider-sama/Pizzrella-Food-Ordering-App",
+    },
+
+    {
+        id: "spotify-clone",
+        title: "Spotify Clone",
+        subtitle: "Custom Music Player",
+        description: `Built a functional spotify clone with an advanced sound player made from scratch, users can fetch products, songs through Supabase. Authentication is done using Supabase Auth, users can add songs, mark favourites, edit their account page, become an author. Stripe integration is implemented for subscription functionality.`,
+        image: "/images/projects/spotify-clone.png",
+        technologies: ["Next.js", "Typescript", "PostgreSQL"],
+        startDate: "July 2024",
+        github: "https://github.com/haider-sama/Spotify-Clone",
+    },
+];
+---
+
+<MainLayout>
+    <div class="space-y-8">
+        <ProjectHeader projects={projects} />
+
+        {projectCards.map((project) => <ProjectCard {...project} />)}
+    </div>
+</MainLayout>

@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    author: string;
+    category: string;
+    publishDate: Date;
+    readingTime: number;
+}
+
+const { author, category, publishDate, readingTime } = Astro.props;
+---
+
+<div
+    class="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-500"
+>
+    <span
+        class="inline-flex items-center rounded border border-primary-dark bg-primary-dark/10
+                px-4 py-2 text-sm font-medium text-primary-dark"
+    >
+        {category}
+    </span>
+
+    <span>•</span>
+
+    <div class="flex items-center gap-2">
+        <Icon name="heroicons:calendar-days-20-solid" class="h-5 w-5" />
+
+        <time datetime={publishDate.toISOString()}>
+            {
+                publishDate.toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                })
+            }
+        </time>
+    </div>
+
+    <span>•</span>
+
+    <div class="flex items-center gap-2">
+        <Icon name="heroicons:user-20-solid" class="h-5 w-5" />
+
+        <span>{author}</span>
+    </div>
+
+    <span>•</span>
+
+    <div class="flex items-center gap-2">
+        <Icon name="heroicons:clock-20-solid" class="h-5 w-5" />
+
+        <span>{readingTime} min read</span>
+    </div>
+</div>

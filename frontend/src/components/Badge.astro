@@ -1,0 +1,26 @@
+---
+interface Props {
+    label: string;
+    color?: "red" | "green" | "blue" | "yellow" | "purple" | "gray";
+}
+
+const { label, color = "gray" } = Astro.props;
+
+const colors = {
+    red: "bg-red-100 border-red-400 text-red-600",
+    green: "bg-green-100 border-green-400 text-green-600",
+    blue: "bg-blue-100 border-blue-400 text-blue-600",
+    yellow: "bg-yellow-100 border-yellow-400 text-yellow-600",
+    purple: "bg-purple-100 border-purple-400 text-pruple-600",
+    gray: "bg-gray-100 border-gray-400 text-gray-600",
+};
+---
+
+<span
+    class:list={[
+        "rounded border px-2 py-1 text-center text-sm",
+        colors[color],
+    ]}
+>
+    {label}
+</span>

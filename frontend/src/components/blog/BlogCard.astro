@@ -1,0 +1,67 @@
+---
+interface Props {
+    slug: string;
+    title: string;
+    description: string;
+    image: string;
+    category: string;
+    publishDate: Date;
+    readingTime: number;
+}
+
+const { slug, title, description, image, category, publishDate, readingTime } =
+    Astro.props;
+---
+
+<a
+    href={`/blog/${slug}`}
+    class="group block overflow-hidden rounded border border-gray-300 transition
+    duration-300 hover:border-primary-dark"
+>
+    <img
+        src={image}
+        alt={title}
+        class="aspect-[16/9] w-full object-cover transition duration-300 group-hover:scale-105"
+    />
+
+    <div class="p-8">
+        <div
+            class="flex w-full items-center justify-between text-sm text-gray-500"
+        >
+            <span
+                class="inline-flex items-center rounded border border-primary-dark
+                bg-primary-dark/20 px-4 py-2 text-sm font-medium text-primary-dark"
+            >
+                {category}
+            </span>
+
+            <time datetime={publishDate.toISOString()}>
+                {
+                    publishDate.toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                    })
+                }
+            </time>
+        </div>
+
+        <h3
+            class="mt-4 text-xl font-semibold transition group-hover:text-primary-dark"
+        >
+            {title}
+        </h3>
+
+        <p class="mt-4 text-gray-500">
+            {description}
+        </p>
+
+        <div class="mt-8 flex items-center justify-between">
+            <span> Read Article → </span>
+
+            <span class="text-sm text-gray-500">
+                {readingTime} min read
+            </span>
+        </div>
+    </div>
+</a>

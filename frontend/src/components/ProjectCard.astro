@@ -1,0 +1,115 @@
+---
+interface Props {
+    id: string;
+    title: string;
+    subtitle?: string;
+    description: string;
+    image: string;
+    technologies: string[];
+    startDate: string;
+    endDate?: string;
+    github?: string;
+    demo?: string;
+    website?: string;
+}
+
+const {
+    id,
+    title,
+    subtitle,
+    description,
+    image,
+    technologies,
+    startDate,
+    endDate,
+    github,
+    demo,
+    website,
+} = Astro.props;
+---
+
+<article id={id} class="border border-gray-300 bg-secondary p-8">
+    <!-- Header -->
+    <div class="flex items-center justify-between gap-4">
+        <h2 class="text-xl font-semibold">
+            {title}
+        </h2>
+
+        <span class="text-md font-semibold whitespace-nowrap text-gray-600">
+            {startDate}
+            {endDate && ` - ${endDate}`}
+        </span>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="flex flex-wrap gap-2 py-4">
+        {
+            technologies.map((tech) => (
+                <span class="bg-gray-800 px-2 py-1 text-xs font-medium text-gray-100">
+                    {tech}
+                </span>
+            ))
+        }
+    </div>
+
+    <!-- Subtitle -->
+    {subtitle && <h3 class="text-xl text-gray-700">{subtitle}</h3>}
+
+    <!-- Description -->
+    <p class="text-justify text-case leading-6">
+        {description}
+    </p>
+
+    <!-- Links -->
+    {
+        (github || demo || website) && (
+            <div class="text-base py-4">
+                <span>Links:</span>
+
+                {github && (
+                    <>
+                        {" "}
+                        <a
+                            href={github}
+                            target="_blank"
+                            class="text-blue-500 hover:underline"
+                        >
+                            GitHub
+                        </a>
+                    </>
+                )}
+
+                {demo && (
+                    <>
+                        <span class="mx-2 text-gray-400">|</span>
+                        <a
+                            href={demo}
+                            target="_blank"
+                            class="text-blue-500 hover:underline"
+                        >
+                            Demo
+                        </a>
+                    </>
+                )}
+
+                {website && (
+                    <>
+                        <span class="mx-2 text-gray-400">|</span>
+                        <a
+                            href={website}
+                            target="_blank"
+                            class="text-blue-500 hover:underline"
+                        >
+                            Website
+                        </a>
+                    </>
+                )}
+            </div>
+        )
+    }
+
+    <!-- Screenshot -->
+    <div class="flex justify-center py-4">
+        <img src={image} alt={title} class="max-h-80 w-auto object-contain" />
+    </div>
+</article>

@@ -1,0 +1,27 @@
+---
+import BlogCard from "@/components/blog/BlogCard.astro";
+import { calculateReadingTime } from "@/utils/blog";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
+    {
+        posts.map((post) => (
+            <BlogCard
+                slug={post.id}
+                title={post.data.title}
+                description={post.data.description}
+                image={post.data.image}
+                category={post.data.category}
+                publishDate={post.data.publishDate}
+                readingTime={calculateReadingTime(post.body ?? "")}
+            />
+        ))
+    }
+</div>

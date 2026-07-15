@@ -1,0 +1,117 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import Badge from "@/components/Badge.astro";
+---
+
+<MainLayout>
+    <section
+        class="flex flex-col gap-6 border border-gray-300 bg-secondary p-6 md:flex-row md:gap-0 md:p-8"
+    >
+        <aside class="flex flex-col items-center md:w-48 md:flex-shrink-0">
+            <img
+                src="/images/avatar.gif"
+                alt="Haider-sama"
+                title="Haider-sama"
+                class="h-32 w-32 object-cover"
+            />
+
+            <div class="mt-4 flex w-full flex-col gap-2">
+                <Badge label="Engineer" color="red" />
+                <Badge label="Martial Artist" color="blue" />
+            </div>
+        </aside>
+
+        <!-- Mobile divider -->
+        <div class="h-px w-full bg-gray-300 md:hidden"></div>
+
+        <!-- Desktop divider -->
+        <div class="mx-6 hidden w-px self-stretch bg-gray-300 md:block"></div>
+
+        <div class="min-w-0 flex-1">
+            <p class="text-base leading-6 text-justify">
+                Hi! This is Haider. Mechatronics Engineer who has a passion for
+                building stuff, martial arts and Dragon Ball. Rest here, fellow
+                warrior. Make a cup of tea and relax and enjoy the nature around
+                you.
+            </p>
+
+            <p class="mt-6 text-base leading-6 text-justify">
+                My interests and hobbies are watching Dragon Ball, Martial Arts
+                including boxing, MMA, Muay Thai, Game Engine Development,
+                Sketching, Meditating, Enjoying Nature. My past hobbies were
+                making Zombie Escape (ZE) maps for Counter-Strike:Source.
+            </p>
+        </div>
+    </section>
+
+    <section class="border border-gray-300 bg-secondary p-6 md:p-8">
+        <h2 class="mb-4 text-2xl font-bold md:text-3xl">Technical Stack</h2>
+
+        <div class="overflow-x-auto">
+            <table class="min-w-[640px] w-full border-collapse">
+                <tbody>
+                    <tr class="border-b border-gray-300">
+                        <th
+                            class="w-48 py-2 pr-8 text-left align-top font-semibold"
+                        >
+                            Languages
+                        </th>
+                        <td class="py-2"> C++, TypeScript, JavaScript </td>
+                    </tr>
+
+                    <tr class="border-b border-gray-300">
+                        <th class="py-2 pr-8 text-left align-top font-semibold">
+                            Frontend
+                        </th>
+                        <td class="py-2"> React, Next.js, Astro </td>
+                    </tr>
+
+                    <tr class="border-b border-gray-300">
+                        <th class="py-2 pr-8 text-left align-top font-semibold">
+                            Backend
+                        </th>
+                        <td class="py-2">
+                            Node.js, Express.js, FastAPI, REST APIs, Third-party
+                            libraries & SDKs
+                        </td>
+                    </tr>
+
+                    <tr class="border-b border-gray-300">
+                        <th class="py-2 pr-8 text-left align-top font-semibold">
+                            Databases
+                        </th>
+                        <td class="py-2"> PostgreSQL, MongoDB, Redis </td>
+                    </tr>
+
+                    <tr class="border-b border-gray-300">
+                        <th class="py-2 pr-8 text-left align-top font-semibold">
+                            ORM
+                        </th>
+                        <td class="py-2"> Drizzle ORM, SQLAlchemy </td>
+                    </tr>
+
+                    <tr class="border-b border-gray-300">
+                        <th class="py-2 pr-8 text-left align-top font-semibold">
+                            Graphics API
+                        </th>
+                        <td class="py-2"> OpenGL, WebGL, HTML5 Canvas API </td>
+                    </tr>
+
+                    <tr class="border-b border-gray-300">
+                        <th class="py-2 pr-8 text-left align-top font-semibold">
+                            Platforms
+                        </th>
+                        <td class="py-2"> Win32 API, Ubuntu, Kali Linux </td>
+                    </tr>
+
+                    <tr>
+                        <th class="py-2 pr-8 text-left align-top font-semibold">
+                            Version Control
+                        </th>
+                        <td class="py-2"> Git </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</MainLayout>

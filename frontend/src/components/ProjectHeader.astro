@@ -1,0 +1,35 @@
+---
+interface Props {
+    projects: {
+        id: string;
+        title: string;
+    }[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section class="border border-gray-300 bg-secondary p-8 md:p-8">
+    <h1 class="text-2xl font-bold md:text-3xl">Projects</h1>
+
+    <p class="mt-4 text-base text-gray-600">
+        Here you'll find my projects that I've worked on over the years, from
+        full-stack web applications to graphics programming and game
+        development.
+    </p>
+
+    <div class="mt-8">
+        <div class="columns-1 gap-8 md:columns-3 space-y-2">
+            {
+                projects.map((project) => (
+                    <a
+                        href={`#${project.id}`}
+                        class="block break-inside-avoid text-blue-500 hover:underline"
+                    >
+                        {project.title}
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>

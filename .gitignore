@@ -1,12 +1,29 @@
 # Ignore node_modules
 node_modules/
 
+# astro
+frontend/dist/
+frontend/.astro/
+frontend/.env
+frontend/.env.*
+frontend/.DS_Store
+
+# backend
+api/.venv/
+api/venv/
+api/env/
+api/__pycache__/
+api/**/*.pyc
+api/.env
+api/.env.*
+
 # Ignore package lock file
 package-lock.json
 
 # Optional: Ignore logs and environment files
 npm-debug.log*
 .env
+*.log
 
 # Optional: Ignore OS files (Mac/Windows)
 .DS_Store

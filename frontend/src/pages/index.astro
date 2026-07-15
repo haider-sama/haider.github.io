@@ -1,0 +1,91 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import Badge from "@/components/Badge.astro";
+import NewsItem from "../components/NewsItem.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+
+const recentPosts = posts
+	.sort(
+		(a, b) =>
+			new Date(b.data.publishDate).getTime() -
+			new Date(a.data.publishDate).getTime(),
+	)
+	.slice(0, 5);
+---
+
+<MainLayout>
+	<section
+		class="flex flex-col gap-6 border border-gray-300 bg-secondary p-6 md:flex-row md:gap-0 md:p-8"
+	>
+		<aside class="flex flex-col items-center md:w-48 md:flex-shrink-0">
+			<img
+				src="/images/avatar.gif"
+				alt="Haider-sama"
+				title="Haider-sama"
+				class="h-32 w-32 object-cover"
+			/>
+
+			<div class="mt-4 flex w-full flex-col gap-2">
+				<Badge label="Engineer" color="red" />
+				<Badge label="Martial Artist" color="blue" />
+			</div>
+		</aside>
+
+		<!-- Mobile divider -->
+		<div class="h-px w-full bg-gray-300 md:hidden"></div>
+
+		<!-- Desktop divider -->
+		<div class="mx-6 hidden w-px self-stretch bg-gray-300 md:block"></div>
+
+		<div class="min-w-0 flex-1">
+			<p class="text-base leading-6 text-justify">
+				Hi! This is Haider. Mechatronics Engineer who has a passion for
+				building stuff, martial arts and Dragon Ball. Rest here, fellow
+				warrior. Make a cup of tea and relax and enjoy the nature around
+				you.
+			</p>
+
+			<p class="mt-6 text-base leading-6 text-justify">
+				My interests and hobbies are watching Dragon Ball, Martial Arts
+				including boxing, MMA, Muay Thai, Game Engine Development,
+				Sketching, Meditating, Enjoying Nature. My past hobbies were
+				making Zombie Escape (ZE) maps for Counter-Strike:Source.
+			</p>
+		</div>
+	</section>
+
+	<section
+		class="flex-1 space-y-8 border border-gray-300 bg-secondary p-6 md:p-8"
+	>
+		<div>
+			<h2 class="mb-4 text-2xl font-bold md:text-3xl">Welcome</h2>
+
+			<p class="text-base md:text-lg">
+				Hi! I'm Haider. This is my website & blog. Explore my work and
+				make yourself at home.
+			</p>
+
+			<div class="my-6 h-px w-full bg-gray-300"></div>
+		</div>
+
+		<div>
+			<h3 class="mb-4 text-xl font-semibold md:text-2xl">
+				Recent Content
+			</h3>
+
+			<div class="space-y-6">
+				{
+					recentPosts.map((post) => (
+						<NewsItem
+							post={post}
+							href={`/blog/${post.id}`}
+							linkText="Read more"
+						/>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</MainLayout>

@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { calculateReadingTime } from "@/utils/blog";
+
+interface Props {
+    post: CollectionEntry<"blog">;
+    href?: string;
+    linkText?: string;
+}
+
+const { post, href, linkText = "Read more" } = Astro.props;
+
+const { title, description, publishDate } = post.data;
+
+const postDate = new Date(publishDate);
+const now = new Date();
+
+const daysOld = Math.floor(
+    (now.getTime() - postDate.getTime()) / (1000 * 60 * 60 * 24),
+);
+
+const isNew = daysOld <= 7;
+
+const formattedDate = postDate.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+});
+---
+
+<div class="space-y-2">
+    <h4
+        class="flex flex-wrap items-center gap-2 text-lg font-semibold md:text-xl"
+    >
+        <span>{title}</span>
+
+        {
+            isNew && (
+                <span class="rounded bg-red-500 px-2 py-0.5 text-xs text-white animate-pulse">
+                    NEW
+                </span>
+            )
+        }
+    </h4>
+
+    <p class="text-sm md:text-base">
+        {description}
+
+        {
+            href && (
+                <>
+                    {" "}
+                    <a href={href} class="text-blue-500 hover:underline">
+                        {linkText}
+                    </a>
+                </>
+            )
+        }
+    </p>
+
+    <div class="text-xs text-gray-500">
+        {formattedDate}
+    </div>
+</div>

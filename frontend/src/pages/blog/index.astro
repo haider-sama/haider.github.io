@@ -1,0 +1,24 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+import BlogHero from "@/components/blog/BlogHero.astro";
+import BlogGrid from "@/components/blog/BlogGrid.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+
+const posts: CollectionEntry<"blog">[] = await getCollection("blog");
+
+posts.sort(
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+);
+---
+
+<MainLayout title="Blog | Haider-sama">
+    <BlogHero
+        title="Insights That Help You"
+        description="Explore guides, insights and lessons that I learned. News is also included for my content here!"
+    />
+
+    <section>
+        <BlogGrid posts={posts} />
+    </section>
+</MainLayout>
